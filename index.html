@@ -1,128 +1,119 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>❤️ سؤال صغير</title>
+<title>سؤال مهم 😂</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+box-sizing:border-box;
+font-family:Arial;
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#ffd1e8,#fff0f6);
-    overflow:hidden;
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#dbeafe,#fef3c7);
+overflow:hidden;
 }
 
-.container{
-    text-align:center;
-    padding:20px;
+.box{
+text-align:center;
+width:100%;
 }
 
 h1{
-    color:#ff2f72;
-    font-size:35px;
-    margin-bottom:40px;
+font-size:35px;
+color:#333;
+animation:pulse 1.5s infinite;
 }
 
 .buttons{
-    position:relative;
-    width:340px;
-    height:120px;
-    margin:auto;
+position:relative;
+width:90%;
+max-width:350px;
+height:170px;
+margin:auto;
 }
 
 button{
-    border:none;
-    border-radius:15px;
-    padding:15px 30px;
-    font-size:20px;
-    cursor:pointer;
-    transition:.25s;
+padding:15px 35px;
+font-size:22px;
+border:0;
+border-radius:20px;
+cursor:pointer;
+box-shadow:0 5px 15px #999;
 }
 
 #yes{
-    background:#ff4d88;
-    color:white;
+background:#22c55e;
+color:white;
 }
 
 #no{
-    position:absolute;
-    left:220px;
-    top:0;
-    background:#ddd;
+background:#ef4444;
+color:white;
+position:absolute;
+left:210px;
+top:20px;
 }
 
-#success{
-    display:none;
-    animation:fade .5s;
+
+#answer{
+display:none;
+font-size:35px;
+color:#16a34a;
+animation:show .7s;
 }
 
-#success h2{
-    color:#ff2f72;
-    font-size:40px;
-    margin-bottom:25px;
+
+.emoji{
+position:fixed;
+font-size:35px;
+animation:fall 3s linear forwards;
 }
 
-.choice{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-}
 
-.choice button{
-    background:#ff6fa5;
-    color:white;
-}
-
-#final{
-    display:none;
-    margin-top:30px;
-    font-size:28px;
-    color:#ff2f72;
-}
-
-.heart{
-    position:fixed;
-    pointer-events:none;
-    animation:float 4s linear forwards;
-}
-
-@keyframes float{
-
-0%{
-    transform:translateY(0) scale(1);
-    opacity:1;
-}
-
-100%{
-    transform:translateY(-100vh) scale(2);
-    opacity:0;
-}
-
-}
-
-@keyframes fade{
+@keyframes fall{
 
 from{
-    opacity:0;
-    transform:scale(.8);
+transform:translateY(0) rotate(0);
+opacity:1;
 }
 
 to{
-    opacity:1;
-    transform:scale(1);
+transform:translateY(100vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+
+@keyframes show{
+
+from{
+transform:scale(.3);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.05);
 }
 
 }
@@ -133,143 +124,122 @@ to{
 
 <body>
 
-<div class="container">
+
+<div class="box">
+
 
 <div id="question">
 
 <h1>
-❤️ هتنزلي ديت معايا؟ ❤️
+😂 هتخس ولا لا؟
 </h1>
+
 
 <div class="buttons">
 
 <button id="yes">
-Yes ❤️
+أيوه 💪
 </button>
+
 
 <button id="no">
-No 🙈
+لا 😂
 </button>
 
-</div>
-
-</div>
-<div id="success">
-
-<h2>
-❤️ كنت عارف ❤️
-</h2>
-
-<p style="font-size:22px;margin-bottom:25px;">
-إمتى تحبي يكون الديت؟
-</p>
-
-<div class="choice">
-
-<button onclick="finish('الأسبوع الجاي')">
-📅 الأسبوع الجاي
-</button>
-
-<button onclick="finish('الأسبوع اللي بعده')">
-🌸 الأسبوع اللي بعده
-</button>
-
-</div>
-
-<div id="final"></div>
 
 </div>
 
 </div>
+
+
+
+<div id="answer">
+
+😂 بطل طفح 💪🔥
+<br><br>
+دلوقتي مفيش أعذار 😎
+
+</div>
+
+
+</div>
+
 
 
 <script>
 
-const no = document.getElementById("no");
-const yes = document.getElementById("yes");
+const no=document.getElementById("no");
+const yes=document.getElementById("yes");
 
-let size = 1;
 
-function move(){
+function moveNo(){
 
-let x = Math.random() * (window.innerWidth - 120);
-let y = Math.random() * (window.innerHeight - 70);
+let x=Math.random()*(window.innerWidth-130);
+let y=Math.random()*(window.innerHeight-80);
 
-no.style.position = "fixed";
-no.style.left = x + "px";
-no.style.top = y + "px";
-
-size += 0.12;
-
-yes.style.transform = `scale(${size})`;
+no.style.position="fixed";
+no.style.left=x+"px";
+no.style.top=y+"px";
 
 }
 
 
-// للكمبيوتر
-no.addEventListener("mouseover", move);
+no.addEventListener("mouseover",moveNo);
 
-// للموبايل
-no.addEventListener("touchstart", move);
+no.addEventListener("touchstart",function(e){
+e.preventDefault();
+moveNo();
+});
 
-// احتياط لو ضغط عادي
-no.addEventListener("click", move);
+no.addEventListener("click",moveNo);
 
 
-yes.onclick = function(){
 
-document.getElementById("question").style.display = "none";
+yes.onclick=function(){
 
-document.getElementById("success").style.display = "block";
+document.getElementById("question").style.display="none";
 
-setInterval(createHeart,180);
+document.getElementById("answer").style.display="block";
+
+
+for(let i=0;i<40;i++){
+
+setTimeout(createEmoji,i*50);
+
+}
 
 };
 
 
-function finish(date){
 
-document.getElementById("final").style.display = "block";
+function createEmoji(){
 
-document.getElementById("final").innerHTML =
-`
-تم الاتفاق على <b>${date}</b> ❤️
-<br><br>
-🌹 أراكِ لاحقًا
-`;
+let e=document.createElement("div");
 
-}
+e.className="emoji";
 
+let arr=["🔥","💪","😂","⭐","🥗"];
 
+e.innerHTML=arr[Math.floor(Math.random()*arr.length)];
 
-function createHeart(){
+e.style.left=Math.random()*window.innerWidth+"px";
 
-let heart = document.createElement("div");
+e.style.top="-50px";
 
-heart.className = "heart";
-
-heart.innerHTML = "❤️";
-
-heart.style.left = Math.random()*window.innerWidth + "px";
-
-heart.style.top = window.innerHeight + "px";
-
-heart.style.fontSize = 
-(20 + Math.random()*30) + "px";
-
-
-document.body.appendChild(heart);
+document.body.appendChild(e);
 
 
 setTimeout(()=>{
 
-heart.remove();
+e.remove();
 
-},4000);
+},3000);
 
 }
 
+
 </script>
+
 
 </body>
 </html>
