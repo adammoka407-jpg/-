@@ -1,128 +1,134 @@
-```html
 <!DOCTYPE html>
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>❤️ سؤال صغير</title>
 
 <style>
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#ffd1e8,#fff0f6);
-overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd1e8,#fff0f6);
+    overflow:hidden;
 }
 
 .container{
-text-align:center;
-padding:20px;
+    text-align:center;
+    padding:20px;
 }
 
 h1{
-font-size:38px;
-color:#ff2f72;
-margin-bottom:40px;
+    color:#ff2f72;
+    font-size:35px;
+    margin-bottom:40px;
 }
 
 .buttons{
-position:relative;
-width:340px;
-height:120px;
-margin:auto;
+    position:relative;
+    width:340px;
+    height:120px;
+    margin:auto;
 }
 
 button{
-padding:15px 30px;
-font-size:22px;
-border:none;
-border-radius:15px;
-cursor:pointer;
-transition:.25s;
+    border:none;
+    border-radius:15px;
+    padding:15px 30px;
+    font-size:20px;
+    cursor:pointer;
+    transition:.25s;
 }
 
 #yes{
-background:#ff4d88;
-color:white;
+    background:#ff4d88;
+    color:white;
 }
 
 #no{
-position:absolute;
-left:220px;
-top:0;
-background:#ddd;
+    position:absolute;
+    left:220px;
+    top:0;
+    background:#ddd;
 }
 
 #success{
-display:none;
-animation:fade .6s;
+    display:none;
+    animation:fade .5s;
 }
 
 #success h2{
-font-size:42px;
-color:#ff2f72;
-margin-bottom:20px;
+    color:#ff2f72;
+    font-size:40px;
+    margin-bottom:25px;
 }
 
 .choice{
-margin-top:20px;
-display:flex;
-gap:20px;
-justify-content:center;
-flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 .choice button{
-background:#ff6fa5;
-color:white;
+    background:#ff6fa5;
+    color:white;
 }
 
 #final{
-display:none;
-margin-top:35px;
-font-size:30px;
-color:#ff2f72;
-animation:fade .5s;
+    display:none;
+    margin-top:30px;
+    font-size:28px;
+    color:#ff2f72;
 }
 
 .heart{
-position:fixed;
-font-size:24px;
-animation:float 4s linear forwards;
-pointer-events:none;
+    position:fixed;
+    pointer-events:none;
+    animation:float 4s linear forwards;
 }
 
 @keyframes float{
+
 0%{
-transform:translateY(0) scale(1);
-opacity:1;
+    transform:translateY(0) scale(1);
+    opacity:1;
 }
+
 100%{
-transform:translateY(-100vh) scale(2);
-opacity:0;
+    transform:translateY(-100vh) scale(2);
+    opacity:0;
 }
+
 }
 
 @keyframes fade{
+
 from{
-opacity:0;
-transform:scale(.8);
+    opacity:0;
+    transform:scale(.8);
 }
+
 to{
-opacity:1;
-transform:scale(1);
+    opacity:1;
+    transform:scale(1);
 }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -131,7 +137,9 @@ transform:scale(1);
 
 <div id="question">
 
-<h1>❤️ هتنزلي ديت معايا؟ ❤️</h1>
+<h1>
+❤️ هتنزلي ديت معايا؟ ❤️
+</h1>
 
 <div class="buttons">
 
@@ -146,12 +154,13 @@ No 🙈
 </div>
 
 </div>
-
 <div id="success">
 
-<h2>❤️ كنت عارف ❤️</h2>
+<h2>
+❤️ كنت عارف ❤️
+</h2>
 
-<p style="font-size:23px;margin-bottom:25px;">
+<p style="font-size:22px;margin-bottom:25px;">
 إمتى تحبي يكون الديت؟
 </p>
 
@@ -173,69 +182,89 @@ No 🙈
 
 </div>
 
+
 <script>
 
-const no=document.getElementById("no");
-const yes=document.getElementById("yes");
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
 
-let size=1;
+let size = 1;
 
 function move(){
 
-const x=Math.random()*(window.innerWidth-120);
+let x = Math.random() * (window.innerWidth - 120);
+let y = Math.random() * (window.innerHeight - 70);
 
-const y=Math.random()*(window.innerHeight-70);
+no.style.position = "fixed";
+no.style.left = x + "px";
+no.style.top = y + "px";
 
-no.style.position="fixed";
-no.style.left=x+"px";
-no.style.top=y+"px";
+size += 0.12;
 
-size+=0.12;
-
-yes.style.transform=`scale(${size})`;
-
-}
-
-no.addEventListener("mouseover",move);
-no.addEventListener("click",move);
-
-yes.onclick=function(){
-
-document.getElementById("question").style.display="none";
-
-document.getElementById("success").style.display="block";
-
-setInterval(heart,180);
+yes.style.transform = `scale(${size})`;
 
 }
+
+
+// للكمبيوتر
+no.addEventListener("mouseover", move);
+
+// للموبايل
+no.addEventListener("touchstart", move);
+
+// احتياط لو ضغط عادي
+no.addEventListener("click", move);
+
+
+yes.onclick = function(){
+
+document.getElementById("question").style.display = "none";
+
+document.getElementById("success").style.display = "block";
+
+setInterval(createHeart,180);
+
+};
+
 
 function finish(date){
 
-document.getElementById("final").style.display="block";
+document.getElementById("final").style.display = "block";
 
-document.getElementById("final").innerHTML=
-`تم الاتفاق على <b>${date}</b><br><br>🌹 أراكِ لاحقًا ❤️`;
+document.getElementById("final").innerHTML =
+`
+تم الاتفاق على <b>${date}</b> ❤️
+<br><br>
+🌹 أراكِ لاحقًا
+`;
 
 }
 
-function heart(){
 
-const h=document.createElement("div");
 
-h.className="heart";
+function createHeart(){
 
-h.innerHTML="❤️";
+let heart = document.createElement("div");
 
-h.style.left=Math.random()*window.innerWidth+"px";
+heart.className = "heart";
 
-h.style.top=window.innerHeight+"px";
+heart.innerHTML = "❤️";
 
-h.style.fontSize=(20+Math.random()*25)+"px";
+heart.style.left = Math.random()*window.innerWidth + "px";
 
-document.body.appendChild(h);
+heart.style.top = window.innerHeight + "px";
+
+heart.style.fontSize = 
+(20 + Math.random()*30) + "px";
+
+
+document.body.appendChild(heart);
+
 
 setTimeout(()=>{
-h.remove();
+
+heart.remove();
+
 },4000);
 
 }
@@ -244,4 +273,3 @@ h.remove();
 
 </body>
 </html>
-```
